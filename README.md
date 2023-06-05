@@ -1,8 +1,8 @@
 # Food order application
 
-This is Full Stack application developed using react and react for frontend, Node.js for runtime environment,Express.js for backend routing and MongoDB for database. 
-Also use Bootstrap and Material UI for beautiful and modern design.
-Use routes and nested routes by using React Router DOM
+This is a full stack application developed using react for frontend, Node.js for runtime environment, Express.js for backend and MongoDB for database. Bootstrap and Material UI has been used for beautiful and modern design.
+
+Front end has been developed using functional components. React Router has been used for navigation between the components. For data connectivity mongoose has been used.
 
 ![Screenshot from 2023-06-05 19-25-51](https://github.com/nikitadole712/orderfood/assets/104484902/c922c90c-4b59-437e-8e3a-631e0c4582da)
 
@@ -10,15 +10,13 @@ Use routes and nested routes by using React Router DOM
 
 This project has following functionalities:
 
-1. It allow users to browse food ittems.
-
-2. It allow users to Signup and Login.
-
-3. It allow users to place order.
+1. Browse food items
+2. Signup and Sign in
+3. Add to cart and Checkout
 
 ### Sign Up & Sign In
 
-User can signup using his information also can login after signup.
+User can sign up using his information and can login after sign up.
 
 ![Screenshot from 2023-06-05 19-13-54](https://github.com/nikitadole712/orderfood/assets/104484902/7a37a62d-cbc2-4235-b7ad-0b5d98534f98)
 
@@ -26,12 +24,12 @@ User can signup using his information also can login after signup.
 
 ### Browse items!
 
-User can browse food items by catagorywise and also can search for the item using search bar.It shows the quantity, portion and short description of the item.
+User can browse food items catagorywise and also can search for the item using search bar. User can select quantity, portion and add item to the cart.
 
 ![Screenshot from 2023-06-05 19-26-27](https://github.com/nikitadole712/orderfood/assets/104484902/5b8425c8-bdab-43d4-96aa-64255cfc774c)
 
 ### Order
 
-User can place order.User can select quantity and the portion of the item while addind to the cart. On the cart screen user can see details andthe total price of the item.
+On the Cart screen user can see the order details and the total price.
 
 ![Screenshot from 2023-06-05 19-27-32](https://github.com/nikitadole712/orderfood/assets/104484902/6d61cf5c-a8c4-4a6d-90f8-3c9495963de3)
