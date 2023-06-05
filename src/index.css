@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+h1{
+  font-size: 20px !important;
+}
+.flex-container{
+  display: flex !important;
+}
+.btn{
+  background-color: red !important;
+  color: white !important;
+}
+select{
+  box-shadow: none !important;
+  border-color: black !important;
+}
+#card-img-top{
+height: 120px;
+}
+#container{
+margin-right: 550px;
+margin-left: 450px;
+}
+.nav-link{
+  color: white !important;
+}
+#carousel{
+  max-height: 700px;
+}
+.carousalImg{
+  object-fit: contain !important;
+}
+
+
