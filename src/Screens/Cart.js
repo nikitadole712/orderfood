@@ -19,20 +19,17 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem('userEmail');
-    let response = await fetch(
-      'http://localhost:5000/api/orderData',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          order_data: data,
-          email: userEmail,
-          order_date: new Date().toDateString(),
-        }),
-      }
-    );
+    let response = await fetch('http://localhost:5000/api/mycart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        order_data: data,
+        email: userEmail,
+        order_date: new Date().toDateString(),
+      }),
+    });
     console.log('JSON RESPONSE:::::', response.status);
     if (response.status === 200) {
       dispatch({ type: 'DROP' });
@@ -48,7 +45,7 @@ export default function Cart() {
       {console.log(data)}
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover ">
-          <thead className=" text-success fs-4">
+          <thead className=" text-white fs-4">
             <tr>
               <th scope="col">#</th>
               <th scope="col">Name</th>
@@ -58,7 +55,7 @@ export default function Cart() {
               <th scope="col"></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-white">
             {data.map((food, index) => (
               <tr>
                 <th scope="row">{index + 1}</th>
@@ -80,7 +77,7 @@ export default function Cart() {
           </tbody>
         </table>
         <div>
-          <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
+          <h1 className="fs-2 text-white ">Total Price: {totalPrice}/-</h1>
         </div>
         <div>
           <button

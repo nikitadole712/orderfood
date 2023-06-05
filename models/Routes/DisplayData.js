@@ -51,7 +51,7 @@ router.post('/getdata', async (req, res) => {
     }
 })
 
-router.post('/myOrderData', async (req, res) => {
+router.post('/mycart', async (req, res) => {
     try {
         console.log(req.body.email)
         let eId = await Order.findOne({ 'email': req.body.email })

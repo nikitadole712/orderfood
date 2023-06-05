@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Food order application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is Full Stack application developed using react and react for frontend, Node.js for runtime environment,Express.js for backend routing and MongoDB for database. 
+Also use Bootstrap and Material UI for beautiful and modern design.
+Use routes and nested routes by using React Router DOM
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+This project has following functionalities:
 
-### `npm start`
+1. It allow users to browse food ittems.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. It allow users to Signup and Login.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. It allow users to place order.
 
-### `npm test`
+### Sign Up & Sign In
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+User can signup using his information also can login after signup.
 
-### `npm run build`
+### Browse items
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User can browse food items by catagorywise and also can search for the item using search bar.It shows the quantity, portion and short description of the item.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Order
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+User can place order.User can select quantity and the portion of the item while addind to the cart. On the cart screen user can see details andthe total price of the item.
