@@ -17,10 +17,7 @@ h1{
 .flex-container{
   display: flex !important;
 }
-.btn{
-  background-color: red !important;
-  color: white !important;
-}
+
 select{
   box-shadow: none !important;
   border-color: black !important;
@@ -41,5 +38,9 @@ margin-left: 450px;
 .carousalImg{
   object-fit: contain !important;
 }
+.button:hover .card{
+  display: block;
+}
+
 
 
