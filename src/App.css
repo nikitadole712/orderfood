@@ -36,4 +36,18 @@
     transform: rotate(360deg);
   }
 }
+.vertical-dotted-line {
+  border-left: 2px dotted gray; 
+  height: 100%; 
+  margin-left: 12px; 
+}
+.div1 {
+  display: inline-block; /* Display div inline */
+  margin-right: '20px';     /* Add some spacing between div 1 and div 2 */
+}
+
+/* Style for div 2 */
+.div2 {
+  display: inline-block; /* Display div inline */
+}
 
