@@ -6,12 +6,14 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ShoppingCard from './ShoppingCard';
+import ShoppingCard from './CartComponent/ShoppingCard';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import Login from '../Screens/Login';
 import Badge, { BadgeProps } from '@mui/material/Badge';
+import { useNavigate } from "react-router-dom"
+
 
 
 const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -71,6 +73,7 @@ export default function Navbar() {
   const [isLoginOpen, setLoginOpen] = React.useState(false); 
 
   const [searchEnabled, setSearchEnabled] = React.useState(false);
+  const navigate = useNavigate()
 
   const handleSearchIconClick = () => {
     setSearchEnabled(true);
@@ -81,7 +84,7 @@ export default function Navbar() {
   return (
     <AppBar component="nav" sx={{ backgroundColor: 'purple' }}>
       <Toolbar>
-        <RestaurantMenuIcon />
+        <RestaurantMenuIcon fontSize='large'/>
         <Typography
           variant="h6"
           component="div"
@@ -108,7 +111,7 @@ export default function Navbar() {
         <Button
           color="inherit"
           className="button"
-          onClick={() => setCartOpen(true)} 
+          onClick={() => navigate(`/cart`)} 
         >
           <StyledBadge badgeContent={4} color="secondary">
             <ShoppingCartIcon />

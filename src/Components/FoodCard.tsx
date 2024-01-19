@@ -10,11 +10,6 @@ import {
   Box,
   IconButton,
   Modal,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle
 } from '@mui/material';
 import { FoodItem } from '../utils/interfaces';
 import CloseIcon from '@mui/icons-material/Close';
@@ -45,8 +40,6 @@ const style = {
 
 export default function FoodCard(props: IProps) {
   const [open, setOpen] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [count, setCount] = useState(0);
   const dispatch = useDispatchCart();
   const [openSnack, setOpensnack] = React.useState(false);
 
@@ -55,14 +48,6 @@ export default function FoodCard(props: IProps) {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleDialogueClose = () => setShowConfirmation(false);
-
-  const handleConfirmOrder = (confirmed: boolean) => {
-    setShowConfirmation(false); 
-    if (confirmed) {
-      setCount((prevCount) => prevCount + 1); 
-    }
-  };
   const handleCloseSnack = (event: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
