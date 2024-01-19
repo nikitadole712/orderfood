@@ -5,9 +5,6 @@ import { Category } from '../utils/interfaces';
 import CategorySection from '../Components/CategorySection';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-import Cart from '../Screens/Cart'
-import ShoppingCard from '../Components/ShoppingCard';
-
 
 export default function Home() {
   const [categories, setCategories] = useState<Category[]>();
@@ -35,8 +32,6 @@ export default function Home() {
       <Container sx={{ py: 12 }}>
         {categories && categories.map(cat => { return (<CategorySection cat={cat}/>);})}  
       </Container>
-      <Cart/>
-      <ShoppingCard/>
       <Footer/>
     </div>
 
