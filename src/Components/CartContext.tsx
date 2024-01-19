@@ -39,21 +39,20 @@ type CartAction =
         items: state.items.filter(item => item._id !== action.payload._id),
       };
 
-    case 'INCREMENT_ITEM':
-      return {
-        items: state.items.map(item =>
-          item._id === action.payload._id ? { ...item, quantity: item.quantity + 1 } : item
-        ),
-      };
-
-    case 'DECREMENT_ITEM':
-      return {
-        items: state.items.map(item =>
-          item._id === action.payload._id && item.quantity > 1
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        ),
-      };
+      case 'INCREMENT_ITEM':
+        return {
+          items: state.items.map((item) =>
+            item._id === action.payload._id ? { ...item, quantity: item.quantity + 1 } : item
+          ),
+        };
+      case 'DECREMENT_ITEM':
+        return {
+          items: state.items.map((item) =>
+            item._id === action.payload._id && item.quantity > 1
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          ),
+        };
       case 'SET_ITEMS':
         return {
           items: action.payload,

@@ -8,8 +8,9 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ShoppingCard from '../Components/ShoppingCard';
-
+import ShoppingCard from '../Components/CartComponent/ShoppingCard';
+import CartNav from '../Components/CartComponent/CartNav';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 
 export default function Cart() {
@@ -74,12 +75,14 @@ export default function Cart() {
   };
 
   return (
+   
     <div style={{ display: 'flex' }}>
-      <div style={{ display: 'flex', alignItems: 'flex-start', marginLeft: '200px' }}>
-    
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-
-    <div style={{marginLeft: 1}} className='cart1'>
+ <>
+     <CartNav/>
+     </>
+   
+      <div style={{marginLeft: '160px', marginTop: '100px'}}>
+      <Container>
           <Stack
       sx={{
         display: 'flex',
@@ -285,35 +288,20 @@ export default function Cart() {
       </Accordion>
       </Paper>
       <Paper elevation={3} square style={{maxWidth: 800, minHeight: 80,}}>
-      <Accordion style={{maxWidth: 800, minHeight: 80,}}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-        <Typography variant="h6" style={{color: 'black', marginTop: '15px', marginLeft: '5px'}}><strong>Payment</strong></Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        <Box style={{ marginLeft: '5px' }}>
       
-    </Box>
-        </AccordionDetails>
-      </Accordion>
+        <Typography variant="h6" style={{color: 'black', marginTop: '15px', marginLeft: '5px'}}><strong><CreditCardIcon fontSize="large"/> Payment</strong></Typography>
             </Paper>
       </Stack>
+      </Container>
       </div>
-      </div>
-      </div>
-      <div className='cart2' style={{ flex: 1, marginLeft: '10px' }}>
-
-    <div className='cart2' style={{marginRight: 170}}>
-      <Container style={{ marginRight: '30px', maxWidth: 450, minHeight: 700 }}>
+      
+<div style={{marginTop: '60px'}}>
+      <Container style={{ maxWidth: 450, minHeight: 700, alignSelf: 'flex-start' }}>
         <Paper elevation={3} square>
       <ShoppingCard/>
       </Paper>
       </Container>
-    </div>
-    </div>
+      </div>
     </div>
   );
 }

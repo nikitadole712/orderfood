@@ -9,7 +9,6 @@ import { Typewriter } from 'react-simple-typewriter';
 import Login from './Login';
 import IcecreamTwoToneIcon from '@mui/icons-material/IcecreamTwoTone';
 import React, { useState, useEffect } from 'react';
-import SoupKitchenIcon from '@mui/icons-material/SoupKitchen';
 
 
 
@@ -34,10 +33,7 @@ export default function FirstPage() {
     }
     const [openup, setOpenup] = React.useState(false);
 
-    const handleOpen = () => {
-      setOpenup(true);
-    };
-
+    
     const [progress, setProgress] = React.useState(0);
 
     React.useEffect(() => {
