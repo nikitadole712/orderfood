@@ -288,8 +288,20 @@ export default function Cart() {
       </Accordion>
       </Paper>
       <Paper elevation={3} square style={{maxWidth: 800, minHeight: 80,}}>
-      
+      <Accordion style={{maxWidth: 800, minHeight: 80,}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
         <Typography variant="h6" style={{color: 'black', marginTop: '15px', marginLeft: '5px'}}><strong><CreditCardIcon fontSize="large"/> Payment</strong></Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+<Stack spacing={2} direction="row" alignItems="center">
+  
+</Stack>
+        </AccordionDetails>
+        </Accordion>
             </Paper>
       </Stack>
       </Container>
