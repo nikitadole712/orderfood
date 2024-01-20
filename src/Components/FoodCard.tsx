@@ -1,24 +1,10 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Link,
-  Box,
-  IconButton,
-  Modal,
-} from '@mui/material';
+import { Modal, CardActionArea } from '@mui/material';
 import { FoodItem } from '../utils/interfaces';
-import CloseIcon from '@mui/icons-material/Close';
-import{ useDispatchCart} from './CartContext'
-import {formatCurrency} from '../utils/formatCurrency';
+import { useDispatchCart } from './CartContext';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-
-
+import ItemCard from './base/ItemCard';
 
 interface IProps {
   item: FoodItem;
@@ -43,18 +29,19 @@ export default function FoodCard(props: IProps) {
   const dispatch = useDispatchCart();
   const [openSnack, setOpensnack] = React.useState(false);
 
-
   const item = props.item;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleCloseSnack = (event: React.SyntheticEvent | Event, reason?: string) => {
+  const handleCloseSnack = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
     if (reason === 'clickaway') {
       return;
     }
     setOpensnack(false);
   };
-
 
   const handleAddToCart = () => {
     setOpensnack(true);
@@ -63,63 +50,31 @@ export default function FoodCard(props: IProps) {
 
   return (
     <div>
-      <Card style={{ width: '16rem' }}>
-        <CardMedia sx={{ height: 120 }} image={item.img} title={item.name} />
-        <CardContent style={{ maxHeight: '200px' }}>
-          <CardActions>
-            <Link onClick={handleOpen} color="inherit" underline="none" style={{ cursor: "pointer" }}>
-              {item.name}
-            </Link>
-          </CardActions>
-          <Typography variant="body2" color="text.secondary">
-            {item.description.substring(0, 48)}...
-          </Typography>
-        </CardContent>
-      </Card>
-
+      <CardActionArea onClick={() => handleOpen()}>
+        <ItemCard item={item} isDetail={false} />
+      </CardActionArea>
       <Modal open={open} onClose={handleClose}>
-        <Card style={{ width: '20rem' }} sx={style}>
-          <Typography gutterBottom variant="h6" component="div">
-            {item.name}
-            <IconButton
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-              sx={{
-                position: 'absolute',
-                right: 8,
-                top: 8,
-                color: (theme) => theme.palette.grey[500],
-              }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Typography>
-          <CardMedia sx={{ height: 150 }} title={item.name} image={item.img} />
-          <CardContent style={{ maxHeight: '300px' }}>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              {item.description}
-            </Typography>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
-              <Button size="small" onClick={handleAddToCart}>
-                Add to Cart
-              </Button>
-              <Typography>{formatCurrency(item.price)}/-
-            </Typography>
-                
-              </Box>
-          </CardContent>
-        </Card>
+        <ItemCard
+          item={item}
+          isDetail={true}
+          handleAddToCart={handleAddToCart}
+          style={style}
+        />
       </Modal>
-      <Snackbar open={openSnack} autoHideDuration={6000} onClose={handleCloseSnack} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
->
+      <Snackbar
+        open={openSnack}
+        autoHideDuration={6000}
+        onClose={handleCloseSnack}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      >
         <Alert
           onClose={handleCloseSnack}
           severity="success"
           variant="filled"
           sx={{ width: '100%' }}
         >
-Added to cart        </Alert>
+          Added to cart{' '}
+        </Alert>
       </Snackbar>
     </div>
   );

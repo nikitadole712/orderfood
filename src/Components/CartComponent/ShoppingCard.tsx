@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react';
 import{ useCart} from '../CartContext'
 import { FoodItem } from '../../utils/interfaces';
 import {formatCurrency} from '../../utils/formatCurrency'
-import { Button,Typography, List, ListItem, ListItemText,ListItemSecondaryAction,Paper, Box } from '@mui/material';
+import { Button,Typography, List, ListItem, ListItemText,ListItemSecondaryAction, Box } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -12,7 +12,6 @@ import { Container } from '@mui/system';
 
 
 export default function ShoppingCard() {
-  const [count, setCount] = useState(0);  
   const cartState = useCart();
   const dispatch = useDispatchCart();
   useEffect(() => {
@@ -30,26 +29,24 @@ export default function ShoppingCard() {
 
 
   const handleCheckout = () => {
-    // Implement the logic for the checkout button (e.g., navigate to a checkout page)
   };
   const [totalPrice, setTotalPrice] = useState<number>(getTotalPrice(cartState.items));
 
   useEffect(() => {
-    // Recalculate total price whenever cart items change
     setTotalPrice(getTotalPrice(cartState.items));
   }, [cartState.items]);
 
   
   return (
       <div className='cart2'>
-        <Container style={{ marginRight: '30px', minWidth: 400 }}>
-          <div className="container m-auto mt-5">
+        <Container style={{ marginRight: '30px', minWidth: 400 ,minHeight: 600}}>
+          <div className="container ">
             <div>
               <Typography variant='h5' style={{
                 display: 'flex',
                 justifyContent: 'center',
                 color: 'purple',
-                marginTop: '20px',
+                marginTop: '45px',
                 marginBottom: '40px'
               }}>
                 <strong>Basket</strong>
@@ -77,7 +74,7 @@ export default function ShoppingCard() {
                   </Box>
                   <ListItemSecondaryAction>
                   <Typography color="inherit">
-                {formatCurrency(item.price * item.quantity)}/-
+                {item.price * item.quantity}/-
             </Typography>
                   </ListItemSecondaryAction>
                 </ListItem>
