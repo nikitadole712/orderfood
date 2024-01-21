@@ -14,6 +14,8 @@ import Login from "./Screens/Login";
 import FirstPage from "./Screens/FirstPage";
 import Cart from "./Screens/Cart";
 import { CartProvider } from "../src/Components/CartContext";
+import EmptyCart from "./Components/EmptyCart";
+import CartAddress from "./Components/CartComponent/CartAddress";
 
 
 export default function App() {
@@ -26,6 +28,8 @@ export default function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/emptycart" element={<EmptyCart/>}/>
+        <Route path="/cart2" element={<CartAddress/>}/>
       </Routes>
   </Router> 
   </CartProvider>

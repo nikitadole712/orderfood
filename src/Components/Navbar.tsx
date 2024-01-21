@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useEffect} from 'react';
 import AppBar from '@mui/material/AppBar';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,7 +12,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import Login from '../Screens/Login';
 import Badge, { BadgeProps } from '@mui/material/Badge';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import{ useCart} from '../Components/CartContext'
+
 
 
 
@@ -79,7 +81,22 @@ export default function Navbar() {
     setSearchEnabled(true);
   };
   
-  
+  const cartState = useCart();
+  const totalQuantity = cartState.items.reduce((total, item) => total + item.quantity, 0);
+  useEffect(() => {
+    // Simulating fetching data from a database (replace with your actual API call)
+    
+  }, []);
+  const handleCartClick = () => {
+    // Check if the cart is empty
+    if (cartState.items.length === 0) {
+      // Navigate to the cart page if it's empty
+      navigate('/emptycart');
+    } else {
+      // Open the drawer if the cart has items
+      setCartOpen(true);
+    }
+  };
   
   return (
     <AppBar component="nav" sx={{ backgroundColor: 'purple' }}>
@@ -111,9 +128,9 @@ export default function Navbar() {
         <Button
           color="inherit"
           className="button"
-          onClick={() => navigate(`/cart`)} 
+          onClick={handleCartClick} 
         >
-          <StyledBadge badgeContent={4} color="secondary">
+          <StyledBadge badgeContent={totalQuantity} color="secondary">
             <ShoppingCartIcon />
           </StyledBadge>              
           Cart

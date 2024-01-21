@@ -1,5 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
+import CartNav from './CartComponent/CartNav';
 interface Styles {
   container: React.CSSProperties;
   image: React.CSSProperties;
@@ -26,6 +27,8 @@ const styles: Styles = {
 
 export default function EmptyCart() {
   return (
+    <>
+    <CartNav/>
     <div style={styles.container}>
       <img
         src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
@@ -40,5 +43,6 @@ export default function EmptyCart() {
         Find Food
       </Button>
     </div>
+    </>
   );
 }
