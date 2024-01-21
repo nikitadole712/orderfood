@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useEffect} from 'react';
 import{ useCart} from '../CartContext'
 import { FoodItem } from '../../utils/interfaces';
 import {formatCurrency} from '../../utils/formatCurrency'
@@ -8,11 +8,13 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import{ useDispatchCart} from '../CartContext'
 import { Container } from '@mui/system';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function ShoppingCard() {
   const cartState = useCart();
+  const navigate = useNavigate()
   const dispatch = useDispatchCart();
   useEffect(() => {
     // Simulating fetching data from a database (replace with your actual API call)
@@ -28,15 +30,15 @@ export default function ShoppingCard() {
   };
 
 
-  const handleCheckout = () => {
-  };
-  const [totalPrice, setTotalPrice] = useState<number>(getTotalPrice(cartState.items));
+  const totalPrice = getTotalPrice(cartState.items);
 
   useEffect(() => {
-    setTotalPrice(getTotalPrice(cartState.items));
-  }, [cartState.items]);
+    // Use the cart length to navigate to the empty cart page if the cart is empty
+    if (cartState.items.length === 0) {
+      navigate('/emptycart'); 
+    }
+  }, [cartState.items, navigate]);
 
-  
   return (
       <div className='cart2'>
         <Container style={{ marginRight: '30px', minWidth: 400 ,minHeight: 600}}>
@@ -59,7 +61,7 @@ export default function ShoppingCard() {
                     primary={item.name}
                     secondary={`${item.quantity} x ${formatCurrency(item.price)}`}
                   style={{   marginLeft: '15px' }}/>
-                  <Box sx={{ display: 'flex', marginRight: 6,border: '1px solid purple' }}>
+                  <Box sx={{ display: 'flex', marginRight: 6,border: '1px solid purple',}}>
                     <Button size="small" aria-label="add" onClick={() => handleIncrement(item)}>
                       <AddIcon style={{ color:'purple'}}/>
                     </Button>
@@ -95,7 +97,7 @@ export default function ShoppingCard() {
                 sx={{ marginTop: 3, borderRadius: 4 ,width: '100%'}}
                 variant="contained"
                 color="secondary"
-                onClick={handleCheckout}
+                onClick={()=>navigate('/cart')}
               >
                 Checkout
               </Button>
