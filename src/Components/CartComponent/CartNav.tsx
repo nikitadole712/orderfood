@@ -46,7 +46,7 @@ export default function CartNav() {
           open={isLoginOpen} 
           onClose={() => setLoginOpen(false)} 
         >
-            <Login/>
+            <Login showImage={true}/>
         </Drawer>
           
       </Toolbar>

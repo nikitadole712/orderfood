@@ -1,15 +1,22 @@
 import { Container } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
-import React from 'react';
+import React, { useState } from 'react';
 import CartAccount from '../Components/CartComponent/CartAccount';
 import CartAddress from '../Components/CartComponent/CartAddress';
 import CartPayment from '../Components/CartComponent/CartPayment';
 import CartNav from '../Components/CartComponent/CartNav';
 import ShoppingCard from '../Components/CartComponent/ShoppingCard';
-
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Cart() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const authState = useAuth();
+
+  const handleLoginSignupSuccess = () => {
+    setIsAuthenticated(true);
+  };
 
   return (
     <div style={{ display: 'flex' }}>
@@ -28,21 +35,20 @@ export default function Cart() {
               },
             }}
           >
-            
-            <CartAccount/>
+            <CartAccount />
             <Paper
               elevation={3}
               square
               style={{ maxWidth: 800, minHeight: 80 }}
             >
-             <CartAddress/>
+              <CartAddress isDisabled={!isAuthenticated} />
             </Paper>
             <Paper
               elevation={3}
               square
               style={{ maxWidth: 800, minHeight: 80 }}
             >
-              <CartPayment/>
+              <CartPayment isDisabled={!isAuthenticated} />
             </Paper>
           </Stack>
         </Container>
@@ -57,7 +63,7 @@ export default function Cart() {
           }}
         >
           <Paper elevation={3} square>
-            <ShoppingCard />
+            <ShoppingCard showCheckoutButton={false} />
           </Paper>
         </Container>
       </div>

@@ -5,10 +5,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-export default function CartAddress() {
+interface CartAddressProps {
+  isDisabled: boolean;
+}
+
+const CartAddress: React.FC<CartAddressProps> = ({ isDisabled }) => {
   return (
     <div>
-      <Accordion style={{ maxWidth: 800, minHeight: 80 }}>
+      <Accordion style={{ maxWidth: 800, minHeight: 80 }} disabled={isDisabled}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -37,6 +41,7 @@ export default function CartAddress() {
                   id="street-name"
                   variant="outlined"
                   fullWidth
+                  disabled={isDisabled}
                   // You can add more properties or handlers as needed
                 />
               </Grid>
@@ -48,6 +53,7 @@ export default function CartAddress() {
                   id="house-number"
                   variant="outlined"
                   fullWidth
+                  disabled={isDisabled}
                   // You can add more properties or handlers as needed
                 />
               </Grid>
@@ -63,6 +69,7 @@ export default function CartAddress() {
                   id="postcode"
                   variant="outlined"
                   fullWidth
+                  disabled={isDisabled}
                   // You can add more properties or handlers as needed
                 />
               </Grid>
@@ -74,6 +81,7 @@ export default function CartAddress() {
                   id="city"
                   variant="outlined"
                   fullWidth
+                  disabled={isDisabled}
                   // You can add more properties or handlers as needed
                 />
               </Grid>
@@ -83,4 +91,6 @@ export default function CartAddress() {
       </Accordion>
     </div>
   );
-}
+};
+
+export default CartAddress;

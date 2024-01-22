@@ -15,9 +15,12 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Stack from '@mui/material/Stack';
 
+interface CartPaymentProps {
+  isDisabled: boolean;
+}
 
-export default function CartPayment() {
-    const [alignment, setAlignment] = React.useState<string>();
+export default function CartPayment({ isDisabled }: CartPaymentProps) {
+  const [alignment, setAlignment] = React.useState<string>();
 
   const handleChangeButton = (
     event: React.MouseEvent<HTMLElement>,
@@ -25,44 +28,44 @@ export default function CartPayment() {
   ) => {
     setAlignment(newAlignment);
   };
-const handleCheckout = () => {
+  const handleCheckout = () => {
   };
+
   return (
     <div>
-        <Accordion style={{ maxWidth: 800, minHeight: 80 }}>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1-content"
-                  id="panel1-header"
-                >
-                  <Typography
-                    variant="h6"
-                    style={{
-                      color: 'black',
-                      marginTop: '15px',
-                      marginLeft: '5px',
-                    }}
-                  >
-                    <strong>
-                      <CreditCardIcon fontSize="large" /> Payment
-                    </strong>
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Stack
-                    spacing={2}
-                    direction="column"
-                    alignItems="center"
-                  >
-                    <ToggleButtonGroup
-      color="primary"
-      value={alignment}
-      exclusive
-      onChange={handleChangeButton}
-      aria-label="Platform"
-      orientation="vertical"
-
-    >
+      <Accordion style={{ maxWidth: 800, minHeight: 80 }} disabled={isDisabled}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography
+            variant="h6"
+            style={{
+              color: 'black',
+              marginTop: '15px',
+              marginLeft: '5px',
+            }}
+          >
+            <strong>
+              <CreditCardIcon fontSize="large" /> Payment
+            </strong>
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Stack
+            spacing={2}
+            direction="column"
+            alignItems="center"
+          >
+            <ToggleButtonGroup
+              color="primary"
+              value={alignment}
+              exclusive
+              onChange={handleChangeButton}
+              aria-label="Platform"
+              orientation="vertical"
+            >
                     <ToggleButton
                       value="list"
                       aria-label="list"

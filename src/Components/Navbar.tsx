@@ -140,7 +140,7 @@ export default function Navbar() {
           open={isCartOpen} 
           onClose={() => setCartOpen(false)} 
         >
-          <ShoppingCard />
+          <ShoppingCard showCheckoutButton={true}/>
         </Drawer>
         
         <Button color="inherit" onClick={() => setLoginOpen(true)}>
@@ -155,7 +155,7 @@ export default function Navbar() {
           open={isLoginOpen} 
           onClose={() => setLoginOpen(false)} 
         >
-          <Login />
+          <Login showImage={true}/>
         </Drawer>
           
       </Toolbar>

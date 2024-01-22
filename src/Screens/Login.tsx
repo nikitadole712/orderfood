@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Link, TextField, Typography } from '@mui/material';
-import '/home/vmaral/Desktop/Nikita/Projects/orderfood/src/App.css'
+import {
+  Box,
+  Button,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
+import '/home/vmaral/Desktop/Nikita/Projects/orderfood/src/App.css';
+import { useDispatchAuth } from '../contexts/AuthContext';
+import { User } from '../utils/interfaces';
 
-export default function Login() {
+interface IProps {
+  showImage: boolean;
+  navigateToHome?: boolean;
+}
+
+export default function Login({ showImage, navigateToHome }: IProps) {
   const [isSignup, setIsSignup] = useState(false);
+  const dispatch = useDispatchAuth();
+
+  const handleLogin = (user: User) => {
+    dispatch({ type: 'LOGIN', payload: user });
+  };
 
   const [credentials, setCredentials] = useState({
     name: '',
@@ -26,7 +44,9 @@ export default function Login() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const url = isSignup ? 'http://localhost:5000/signup' : 'http://localhost:5000/loginuser';
+    const url = isSignup
+      ? 'http://localhost:5000/signup'
+      : 'http://localhost:5000/loginuser';
 
     fetch(url, {
       method: 'POST',
@@ -35,25 +55,26 @@ export default function Login() {
       },
       body: JSON.stringify(credentials),
     })
-    .then(response => {
-      if (!response.ok) {
-        return response.json().then(data => {
-          throw new Error(data.message || 'Something went wrong!');
-        });
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.success) {
-        navigate('/home');
-      } else {
-        setError('Invalid username or password. Please try again.');
-      }
-    })
-    .catch(error => {
-      console.log(error);
-      setError(error.message || 'Something went wrong!');
-    });
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((data) => {
+            throw new Error(data.message || 'Something went wrong!');
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data) {
+          handleLogin(data);
+          navigateToHome && navigate('/home');
+        } else {
+          setError('Invalid username or password. Please try again.');
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setError(error.message || 'Something went wrong!');
+      });
   };
 
   return (
@@ -65,37 +86,51 @@ export default function Login() {
           maxWidth={500}
           marginTop={5}
           padding={5}
-          
         >
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+            }}
+          >
+            <div className="div1">
+              <Typography variant="h4" padding={3}>
+                <strong> {isSignup ? 'Sign up' : 'Login'}</strong>
+              </Typography>
 
-          <div className= 'div1'>
-          <Typography variant="h4" padding={3}>
-           <strong> {isSignup ? 'Sign up' : 'Login'}</strong>
-          </Typography>
-          
-          <Typography>
-  {isSignup ? 'or ' : 'or '}
-  <Link
-    onClick={() => setIsSignup(!isSignup)}
-    color="secondary"
-    underline="none"
-  >
-    {isSignup ? 'login to your account' : 'create an account'}
-  </Link>
-</Typography>
-</div>
-<div className='div2' style={{ display: 'inline-block', verticalAlign: 'middle' }} >
-
-
-<img 
-              src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r" 
-              alt="Vegetable"
-              style={{ width: '140px', height: '140px', marginLeft: '100px' }} 
- 
-            />
+              <Typography>
+                {isSignup ? 'or ' : 'or '}
+                <Link
+                  onClick={() => setIsSignup(!isSignup)}
+                  color="secondary"
+                  underline="none"
+                >
+                  {isSignup
+                    ? 'login to your account'
+                    : 'create an account'}
+                </Link>
+              </Typography>
             </div>
+            <div
+              className="div2"
+              style={{
+                display: 'inline-block',
+                verticalAlign: 'middle',
+              }}
+            >
+              {showImage && (
+                <img
+                  src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r"
+                  alt="Vegetable"
+                  style={{
+                    width: '140px',
+                    height: '140px',
+                    marginLeft: '100px',
+                  }}
+                />
+              )}
             </div>
+          </div>
 
           {isSignup && (
             <TextField
@@ -104,11 +139,11 @@ export default function Login() {
               margin="normal"
               variant="outlined"
               placeholder="Name"
-              autoComplete='off'
+              autoComplete="off"
               value={credentials.name}
               onChange={handleChange}
               style={{ borderRadius: 0 }}
-              />
+            />
           )}
           <TextField
             name="email"
@@ -116,11 +151,10 @@ export default function Login() {
             margin="normal"
             variant="outlined"
             placeholder="Email"
-            autoComplete='off'
+            autoComplete="off"
             value={credentials.email}
             onChange={handleChange}
             style={{ borderRadius: 0 }}
-
           />
           <TextField
             name="password"
@@ -131,19 +165,21 @@ export default function Login() {
             value={credentials.password}
             onChange={handleChange}
             style={{ borderRadius: 0 }}
-
           />
           <Button
             type="submit"
             sx={{ marginTop: 3, borderRadius: 4 }}
             variant="contained"
             color="secondary"
-
           >
             {isSignup ? 'Signup' : 'Login'}
           </Button>
           {error && (
-            <Typography color="error" textAlign="center" marginTop={2}>
+            <Typography
+              color="error"
+              textAlign="center"
+              marginTop={2}
+            >
               {error}
             </Typography>
           )}

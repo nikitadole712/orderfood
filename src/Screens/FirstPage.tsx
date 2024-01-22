@@ -103,24 +103,6 @@ export default function FirstPage() {
                 <b>Taste4U</b>
               </Typography>
             </div>
-            <Button
-              color="secondary"
-              variant="contained"
-              style={{ borderRadius: 0 }}
-              onClick={toggleDrawer}
-            >
-              Login
-            </Button>
-            <Drawer
-              PaperProps={{
-                sx: { width: '40%' },
-              }}
-              anchor="right"
-              open={open}
-              onClose={toggleDrawer}
-            >
-              <Login />
-            </Drawer>
           </div>
           <div className="mt-4">
             <h1
