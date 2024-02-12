@@ -6,24 +6,19 @@ import {
   Button,
   CircularProgress,
   Container,
-  Drawer,
   InputAdornment,
   OutlinedInput,
 } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/system';
 import { Typewriter } from 'react-simple-typewriter';
-import Login from './Login';
 import IcecreamTwoToneIcon from '@mui/icons-material/IcecreamTwoTone';
 import React, { useState } from 'react';
 
 export default function FirstPage() {
-  const [open, setOpen] = React.useState(false);
   const [location, setLocation] = useState('');
   const [error, setError] = useState('');
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+ 
   const handleType = (count: number) => {
     console.log(count);
   };
@@ -65,6 +60,7 @@ export default function FirstPage() {
       setError('Please enter a valid location.');
     } else {
       setError('');
+      setOpenup(true);
       window.location.pathname = '/home';
     }
   };
@@ -103,6 +99,7 @@ export default function FirstPage() {
                 <b>Taste4U</b>
               </Typography>
             </div>
+
           </div>
           <div className="mt-4">
             <h1

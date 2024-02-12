@@ -5,24 +5,28 @@ import React, { useState } from 'react';
 import CartAccount from '../Components/CartComponent/CartAccount';
 import CartAddress from '../Components/CartComponent/CartAddress';
 import CartPayment from '../Components/CartComponent/CartPayment';
-import CartNav from '../Components/CartComponent/CartNav';
+import Navbar from '../Components/Navbar';
 import ShoppingCard from '../Components/CartComponent/ShoppingCard';
-import { useAuth } from '../contexts/AuthContext';
 
 export default function Cart() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isNextClicked, setIsNextClicked] = useState(false);
 
-  const authState = useAuth();
-
-  const handleLoginSignupSuccess = () => {
+  const handleLoginSuccess = () => {
     setIsAuthenticated(true);
   };
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
+  const handleNextButtonClick = () => {
+    setIsNextClicked(true);
+  };
+
   return (
-    <div style={{ display: 'flex' }}>
-      <>
-        <CartNav />
-      </>
+    <div style={{ display: 'flex' , minWidth: 800, minHeight: 80}}>
+      <Navbar isAuthenticated={isAuthenticated} onLoginSuccess={handleLoginSuccess} onLogout={handleLogout} isHomepage={false}/>
 
       <div style={{ marginLeft: '160px', marginTop: '100px' }}>
         <Container>
@@ -32,24 +36,17 @@ export default function Cart() {
               flexWrap: 'wrap',
               '& > :not(style)': {
                 m: 1,
+                width: '100%',
               },
             }}
           >
-            <CartAccount />
-            <Paper
-              elevation={3}
-              square
-              style={{ maxWidth: 800, minHeight: 80 }}
-            >
-              <CartAddress isDisabled={!isAuthenticated} />
-            </Paper>
-            <Paper
-              elevation={3}
-              square
-              style={{ maxWidth: 800, minHeight: 80 }}
-            >
-              <CartPayment isDisabled={!isAuthenticated} />
-            </Paper>
+            {/* Pass isAuthenticated prop to CartAccount */}
+            <CartAccount isDisabled={isAuthenticated} isAuthenticated={isAuthenticated} onLoginSuccess={handleLoginSuccess} onLogout={handleLogout} />
+
+              <CartAddress isDisabled={!isAuthenticated} isAuthenticated={isAuthenticated} onNextButtonClick={handleNextButtonClick} />
+            
+              <CartPayment isDisabled={!isAuthenticated || !isNextClicked} isAuthenticated={isAuthenticated}/>
+            
           </Stack>
         </Container>
       </div>

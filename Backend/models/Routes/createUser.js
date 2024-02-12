@@ -57,7 +57,7 @@ router.post(
       return res.json({ name: userData.name, email: userData.email });
     } catch (error) {
       console.log(error);
-      res.status(400).json({ errors: error });
+      res.status(400).json({ errors: false });
     }
   }
 );

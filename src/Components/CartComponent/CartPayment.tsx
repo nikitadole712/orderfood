@@ -17,9 +17,11 @@ import Stack from '@mui/material/Stack';
 
 interface CartPaymentProps {
   isDisabled: boolean;
+  isAuthenticated: boolean;
+
 }
 
-export default function CartPayment({ isDisabled }: CartPaymentProps) {
+export default function CartPayment({ isDisabled, isAuthenticated }: CartPaymentProps) {
   const [alignment, setAlignment] = React.useState<string>();
 
   const handleChangeButton = (
@@ -33,7 +35,7 @@ export default function CartPayment({ isDisabled }: CartPaymentProps) {
 
   return (
     <div>
-      <Accordion style={{ maxWidth: 800, minHeight: 80 }} disabled={isDisabled}>
+      <Accordion style={{ maxWidth: 800, minHeight: 80 }} disabled={isDisabled || !isAuthenticated}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -52,6 +54,7 @@ export default function CartPayment({ isDisabled }: CartPaymentProps) {
             </strong>
           </Typography>
         </AccordionSummary>
+        {isAuthenticated ? (
         <AccordionDetails>
           <Stack
             spacing={2}
@@ -178,6 +181,9 @@ export default function CartPayment({ isDisabled }: CartPaymentProps) {
                 Checkout
               </Button>
                 </AccordionDetails>
+                ) : (
+                  <></>
+                )}
               </Accordion>
     </div>
   )

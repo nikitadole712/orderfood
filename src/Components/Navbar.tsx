@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,19 +6,28 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Badge from '@mui/material/Badge';
 import ShoppingCard from './CartComponent/ShoppingCard';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
 import Login from '../Screens/Login';
-import Badge, { BadgeProps } from '@mui/material/Badge';
-import { useNavigate } from "react-router-dom";
-import{ useCart} from '../Components/CartContext'
+import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from './CartContext';
+import { useDispatchAuth } from '../contexts/AuthContext';
+import { User } from '../utils/interfaces';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
+import IconButton from '@mui/material/IconButton';
+import SupportIcon from '@mui/icons-material/Support';
 
+interface NavbarProps {
+  isHomepage: boolean;
+  isAuthenticated: boolean; 
+  onLoginSuccess: () => void; 
+  onLogout: () => void; 
+}
 
-
-
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: 10,
     top: -7,
@@ -27,141 +36,116 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   },
 }));
 
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
-
-
-export default function Navbar() {
-  const [isCartOpen, setCartOpen] = React.useState(false); 
-  const [isLoginOpen, setLoginOpen] = React.useState(false); 
-
-  const [searchEnabled, setSearchEnabled] = React.useState(false);
-  const navigate = useNavigate()
-
-  const handleSearchIconClick = () => {
-    setSearchEnabled(true);
-  };
-  
+export default function Navbar({ isHomepage, isAuthenticated, onLoginSuccess, onLogout }: NavbarProps) {  
+  const [isCartOpen, setCartOpen] = useState(false);
+  const [isLoginOpen, setLoginOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
   const cartState = useCart();
   const totalQuantity = cartState.items.reduce((total, item) => total + item.quantity, 0);
+  const dispatchAuth = useDispatchAuth();
+
   useEffect(() => {
-    // Simulating fetching data from a database (replace with your actual API call)
-    
-  }, []);
+    const token = localStorage.getItem('token');
+    if (token) {
+      onLoginSuccess(); 
+    }
+  }, [onLoginSuccess]);
+
+
+  const handleLogin = (user: User) => {
+    localStorage.setItem('token', 'dummyToken');
+    onLoginSuccess(); 
+    setLoginOpen(false);
+    dispatchAuth({ type: 'LOGIN', payload: user }); 
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    onLogout(); 
+    setCartOpen(false); 
+    setLoginOpen(false); 
+  };
+
   const handleCartClick = () => {
-    // Check if the cart is empty
     if (cartState.items.length === 0) {
-      // Navigate to the cart page if it's empty
       navigate('/emptycart');
     } else {
-      // Open the drawer if the cart has items
       setCartOpen(true);
     }
   };
-  
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <AppBar component="nav" sx={{ backgroundColor: 'purple' }}>
       <Toolbar>
-        <RestaurantMenuIcon fontSize='large'/>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-        >
-          Taste4U
+        <RestaurantMenuIcon fontSize="large" />
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
+          {isHomepage ? 'Taste4U' : 'Secure Checkout'}
         </Typography>
-
-        {searchEnabled ? (
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+        {isHomepage ? (
+          <>
+            <Button color="inherit" className="button" onClick={handleCartClick}>
+              <StyledBadge badgeContent={totalQuantity} color="secondary">
+                <ShoppingCartIcon />
+              </StyledBadge>
+              Cart
+            </Button>
+            <Drawer anchor="right" open={isCartOpen} onClose={() => setCartOpen(false)}>
+              <ShoppingCard showCheckoutButton={true} />
+            </Drawer>
+          </>
         ) : (
-          <Button color="inherit" onClick={handleSearchIconClick}>
-            <SearchIcon />
+          <Button color="inherit" className="button" style={{ marginRight: 5 }}>
+            <SupportIcon /> Help
           </Button>
         )}
-        <Button
-          color="inherit"
-          className="button"
-          onClick={handleCartClick} 
-        >
-          <StyledBadge badgeContent={totalQuantity} color="secondary">
-            <ShoppingCartIcon />
-          </StyledBadge>              
-          Cart
-        </Button>
-        <Drawer 
-          anchor="right" 
-          open={isCartOpen} 
-          onClose={() => setCartOpen(false)} 
-        >
-          <ShoppingCard showCheckoutButton={true}/>
+        {isAuthenticated ? (          <>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircleIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
+            </Menu>
+          </>
+        ) : (
+          <Button color="inherit" onClick={() => setLoginOpen(true)}>
+            Login
+          </Button>
+        )}
+
+        <Drawer PaperProps={{ sx: { width: '40%' } }} anchor="right" open={isLoginOpen} onClose={() => setLoginOpen(false)}>
+          <Login showImage={true} onLogin={handleLogin} />
         </Drawer>
-        
-        <Button color="inherit" onClick={() => setLoginOpen(true)}>
-          Login
-        </Button>
-        
-        <Drawer
-          PaperProps={{
-            sx: { width: "40%" },
-          }}
-          anchor='right'
-          open={isLoginOpen} 
-          onClose={() => setLoginOpen(false)} 
-        >
-          <Login showImage={true}/>
-        </Drawer>
-          
       </Toolbar>
     </AppBar>
   );
 }
-
-
-

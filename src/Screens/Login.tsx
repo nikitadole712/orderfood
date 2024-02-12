@@ -14,25 +14,19 @@ import { User } from '../utils/interfaces';
 interface IProps {
   showImage: boolean;
   navigateToHome?: boolean;
+  onLogin: (user: User) => void; // Callback function for successful login
 }
 
-export default function Login({ showImage, navigateToHome }: IProps) {
+export default function Login({ showImage, navigateToHome, onLogin }: IProps) {
   const [isSignup, setIsSignup] = useState(false);
-  const dispatch = useDispatchAuth();
-
-  const handleLogin = (user: User) => {
-    dispatch({ type: 'LOGIN', payload: user });
-  };
-
+  const dispatchAuth = useDispatchAuth();
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
     password: '',
   });
-
   const [error, setError] = useState('');
-
-  let navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -65,7 +59,8 @@ export default function Login({ showImage, navigateToHome }: IProps) {
       })
       .then((data) => {
         if (data) {
-          handleLogin(data);
+          dispatchAuth({ type: 'LOGIN', payload: data }); // Dispatch the login action
+          onLogin(data); // Invoke the callback function on successful login
           navigateToHome && navigate('/home');
         } else {
           setError('Invalid username or password. Please try again.');

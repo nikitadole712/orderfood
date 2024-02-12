@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Footer from '../Components/Footer';
-import Navbar from '../Components/Navbar';
-
 interface OrderDataItem {
   Order_date?: string;
   img: string;
@@ -46,8 +44,6 @@ const MyOrder: React.FC = () => {
 
   return (
     <div>
-      <Navbar />
-
       <div className="container">
         <div className="row">
           {orderData?.orderData ? orderData.orderData.order_data
