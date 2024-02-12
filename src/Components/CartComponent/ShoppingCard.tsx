@@ -10,9 +10,11 @@ import{ useDispatchCart} from '../CartContext'
 import { Container } from '@mui/system';
 import { useNavigate } from "react-router-dom";
 
+interface ShoppingCardProps {
+  showCheckoutButton: boolean;
+}
 
-
-export default function ShoppingCard() {
+export default function ShoppingCard({ showCheckoutButton }: ShoppingCardProps) {
   const cartState = useCart();
   const navigate = useNavigate()
   const dispatch = useDispatchCart();
@@ -92,6 +94,7 @@ export default function ShoppingCard() {
               </div>
             </div>
             <div>
+            {showCheckoutButton && (
               <Button
                 type="submit"
                 sx={{ marginTop: 3, borderRadius: 4 ,width: '100%'}}
@@ -99,8 +102,9 @@ export default function ShoppingCard() {
                 color="secondary"
                 onClick={()=>navigate('/cart')}
               >
-                Checkout
+              Payment
               </Button>
+            )}
             </div>
           </div>
         </Container>

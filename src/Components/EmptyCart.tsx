@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import React from 'react';
-import CartNav from './CartComponent/CartNav';
+import Navbar from '../Components/Navbar';
+
 interface Styles {
   container: React.CSSProperties;
   image: React.CSSProperties;
@@ -28,21 +29,21 @@ const styles: Styles = {
 export default function EmptyCart() {
   return (
     <>
-    <CartNav/>
-    <div style={styles.container}>
-      <img
-        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
-        alt="emptycart"
-        style={styles.image}
-      />
-      <Typography variant="h5" style={{marginTop: '30px',fontSize: '20px',color: '#555',}}><strong>Your Cart is Empty</strong></Typography>
-      <Typography variant="h6" style={styles.text}>
-        You can go to the home page and discover more options
-      </Typography>
-      <Button variant="contained" color="secondary"style={{marginTop: '30px' ,borderRadius: 0}}>
-        Find Food
-      </Button>
-    </div>
+<Navbar isHomepage={false} isAuthenticated={false} onLoginSuccess={() => {}} onLogout={() => {}} />
+      <div style={styles.container}>
+        <img
+          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/2xempty_cart_yfxml0"
+          alt="emptycart"
+          style={styles.image}
+        />
+        <Typography variant="h5" style={{marginTop: '30px',fontSize: '20px',color: '#555',}}><strong>Your Cart is Empty</strong></Typography>
+        <Typography variant="h6" style={styles.text}>
+          You can go to the home page and discover more options
+        </Typography>
+        <Button variant="contained" color="secondary"style={{marginTop: '30px' ,borderRadius: 0}}>
+          Find Food
+        </Button>
+      </div>
     </>
   );
 }
