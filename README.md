@@ -1,6 +1,6 @@
 # Food order application
 
-This is Full Stack application developed using react and react for frontend, Node.js for runtime environment,Express.js for backend routing and MongoDB for database. 
+This is Full Stack application developed using react and react with typescript for frontend, Node.js for runtime environment,Express.js for backend routing and MongoDB for database. 
 Also use Bootstrap and Material UI for beautiful and modern design.
 Use routes and nested routes by using React Router DOM
 
