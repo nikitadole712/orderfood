@@ -45,7 +45,10 @@ User can signup using his information also can login after signup.
 
 ### Order
 
-User can place order.User should be able to specify the quantity they wish to purchase. On the cart screen user can see details and the total price of the item and also he could be able to login if he doen't login before after login he is able to add address and payment options.
+User can place order.User should be able to specify the quantity they wish to purchase. On the cart screen user can see details and the total price of the item.
+
+![basket](https://github.com/nikitadole712/orderfood/assets/104484902/7a4e2f09-bbab-4c3f-83b7-d7835fa2cbd1)
+
 
 - If User does not login/signup then it gives login option
 
@@ -53,9 +56,11 @@ User can place order.User should be able to specify the quantity they wish to pu
 
 - After login User is able to add address.
 
+![Screenshot from 2024-02-13 14-15-27](https://github.com/nikitadole712/orderfood/assets/104484902/dd3e4ed8-875d-43d9-a428-57c0a2e87f3d)
+
 ![Screenshot from 2024-02-13 14-15-31](https://github.com/nikitadole712/orderfood/assets/104484902/78646e45-5b5e-4f3f-8fa1-ca731b3cf528)
 
-![Screenshot from 2024-02-13 14-15-27](https://github.com/nikitadole712/orderfood/assets/104484902/dd3e4ed8-875d-43d9-a428-57c0a2e87f3d)
+- Payment options displays after entering address.
 
 ![Screenshot from 2024-02-13 14-15-43](https://github.com/nikitadole712/orderfood/assets/104484902/e27efaae-f12f-4c76-945e-022b1fb1449b)
 
