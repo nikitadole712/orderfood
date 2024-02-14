@@ -11,11 +11,18 @@ https://github.com/nikitadole712/orderfood/assets/104484902/3741a157-d920-4bca-8
 
 This project has following functionalities:
 
-1. It allow users to browse food ittems.
+1. It allow users to browse food items.
 
 2. It allow users to Signup and Login.
 
 3. It allow users to place order.
+
+### First Page
+
+On this page user can enter the location.
+
+![Screenshot from 2024-02-13 14-13-51](https://github.com/nikitadole712/orderfood/assets/104484902/845b4e4f-1eca-44f7-bad8-6d2af9215da9)
+
 
 ### Sign Up & Sign In
 
