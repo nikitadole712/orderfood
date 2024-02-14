@@ -31,19 +31,17 @@ User can browse food items by catagorywise.It shows the quantity, price and shor
 
 ![Screenshot from 2024-02-13 14-14-14](https://github.com/nikitadole712/orderfood/assets/104484902/8a4a1df7-013a-4a25-ab65-51a4f25ed19e)
 
+### Add to cart 
+
+The user can browse items, and subsequently, add them to their cart.
+
+![Screenshot from 2024-02-13 14-14-17](https://github.com/nikitadole712/orderfood/assets/104484902/2eff2eed-95fe-418a-89f4-a5fd382114ff)
 
 ### Sign Up & Sign In
 
 User can signup using his information also can login after signup.
 
 ![Screenshot from 2024-02-13 14-14-40](https://github.com/nikitadole712/orderfood/assets/104484902/70d8b6f1-f8fb-4cc4-b71c-af055e2e5cde)
-
-### Add to cart 
-
-file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-14.png
-
-![Screenshot from 2024-02-13 14-14-17](https://github.com/nikitadole712/orderfood/assets/104484902/2eff2eed-95fe-418a-89f4-a5fd382114ff)
-
 
 ### Order
 
