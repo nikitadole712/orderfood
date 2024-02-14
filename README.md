@@ -25,20 +25,20 @@ User can signup using his information also can login after signup.
 
 file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-40.png
 
-### Browse items
+#### Browse items
 
 User can browse food items by catagorywise and also can search for the item using search bar.It shows the quantity, portion and short description of the item.
 
 file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-08.png
 
-### Add to cart 
+##### Add to cart 
 
 file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-14.png
 
 ![Screenshot from 2024-02-13 14-14-17](https://github.com/nikitadole712/orderfood/assets/104484902/2eff2eed-95fe-418a-89f4-a5fd382114ff)
 
 
-### Order
+###### Order
 
 User can place order.User can select quantity and the portion of the item while addind to the cart. On the cart screen user can see details andthe total price of the item.
 
