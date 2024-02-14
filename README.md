@@ -45,11 +45,7 @@ User can signup using his information also can login after signup.
 
 ### Order
 
-User can place order.User can select quantity and the portion of the item while addind to the cart. On the cart screen user can see details andthe total price of the item.
-
-file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-52.png
-
-file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-15-31.png
+User can place order.User should be able to specify the quantity they wish to purchase. On the cart screen user can see details and the total price of the item and also he could be able to login if he doen't login before after login he is able to add address and payment options.
 
 ![Screenshot from 2024-02-13 14-15-27](https://github.com/nikitadole712/orderfood/assets/104484902/dd3e4ed8-875d-43d9-a428-57c0a2e87f3d)
 
