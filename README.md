@@ -8,20 +8,18 @@ Use routes and nested routes by using React Router DOM
 
 This project has following functionalities:
 
-1. It allow users to browse food ittems.
+1. It allow users to Signup and Login.
 
-2. It allow users to Signup and Login.
-
-3. It allow users to place order.
+2. It allow users to place order.
 
 ### Sign Up & Sign In
 
-User can signup using his information also can login after signup.
+User can signup and login.
 
 ### Browse items
 
-User can browse food items by catagorywise and also can search for the item using search bar.It shows the quantity, portion and short description of the item.
+User can browse food items by catagorywise .
 
 ### Order
 
-User can place order.User can select quantity and the portion of the item while addind to the cart. On the cart screen user can see details andthe total price of the item.
+User can place order.User can select quantity of the item while addind to the cart. On the cart screen user can see details and the total price of the item.
