@@ -50,11 +50,11 @@ User can place order.User should be able to specify the quantity they wish to pu
 ![basket](https://github.com/nikitadole712/orderfood/assets/104484902/7a4e2f09-bbab-4c3f-83b7-d7835fa2cbd1)
 
 
-- If User does not login/signup before then it gives login option
+- If user does not login/signup before then it gives login option
 
 ![Screenshot from 2024-02-13 14-15-01](https://github.com/nikitadole712/orderfood/assets/104484902/649d87e2-63e9-402b-9c8b-169de739be94)
 
-- After login User is able to add address.
+- After login user is able to add address.
 
 ![Screenshot from 2024-02-13 14-15-27](https://github.com/nikitadole712/orderfood/assets/104484902/dd3e4ed8-875d-43d9-a428-57c0a2e87f3d)
 
