@@ -52,6 +52,8 @@ User can place order.User should be able to specify the quantity they wish to pu
 
 - If user does not login/signup before then it gives login option
 
+![Screenshot from 2024-02-13 14-14-52](https://github.com/nikitadole712/orderfood/assets/104484902/e295f69b-fc28-4c64-bfc3-44096a850a7c)
+
 ![Screenshot from 2024-02-13 14-15-01](https://github.com/nikitadole712/orderfood/assets/104484902/649d87e2-63e9-402b-9c8b-169de739be94)
 
 - After login user is able to add address.
