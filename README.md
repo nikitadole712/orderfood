@@ -62,5 +62,5 @@ User can place order.User should be able to specify the quantity they wish to pu
 
 - Payment options displays after entering address.
 
-![Screenshot from 2024-02-13 14-15-43](https://github.com/nikitadole712/orderfood/assets/104484902/e27efaae-f12f-4c76-945e-022b1fb1449b)
+![Screenshot from 2024-02-13 14-15-43](https://github.com/nikitadole712/orderfood/assets/104484902/b249ab7b-0b6d-4288-8b47-70a0f8762137)
 
