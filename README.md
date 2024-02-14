@@ -21,9 +21,7 @@ This project has following functionalities:
 
 User can signup using his information also can login after signup.
 
-![Screenshot from 2024-02-13 14-15-01](https://github.com/nikitadole712/orderfood/assets/104484902/1a0aa67e-e2d1-4dbd-87fc-8c117d0aba62)
-
-file:///home/vmaral/Pictures/Screenshot%20from%202024-02-13%2014-14-40.png
+![Screenshot from 2024-02-13 14-14-40](https://github.com/nikitadole712/orderfood/assets/104484902/70d8b6f1-f8fb-4cc4-b71c-af055e2e5cde)
 
 #### Browse items
 
